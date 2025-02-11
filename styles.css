@@ -1,0 +1,130 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #ffcccb; /* Fondo rosa */
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+}
+
+.container {
+    text-align: center;
+}
+
+.card {
+    width: 600px; /* Doble de ancho */
+    height: 400px; /* Doble de alto */
+    position: relative;
+    perspective: 1000px;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+.card-front, .card-inside {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backface-visibility: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #ff69b4; /* Rosa más intenso, casi rojo */
+}
+
+.card-front {
+    background-color: #ff1493; /* Rosa fuerte */
+    transform: rotateY(0deg);
+    transition: transform 0.5s;
+}
+
+.card-inside {
+    background-color: #ff69b4; /* Rosa más intenso */
+    transform: rotateY(180deg);
+    transition: transform 0.5s;
+}
+
+.card.open .card-front {
+    transform: rotateY(180deg);
+}
+
+.card.open .card-inside {
+    transform: rotateY(0deg);
+}
+
+p {
+    font-size: 40px; /* Texto más grande */
+    color: #fff; /* Texto blanco */
+}
+
+.buttons {
+    margin-top: 20px;
+}
+
+.buttons button {
+    padding: 15px 30px; /* Botones más grandes */
+    font-size: 20px; /* Texto más grande */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 0 10px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.buttons button:first-child {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.buttons button:first-child:hover {
+    background-color: #45a049;
+}
+
+.buttons button:last-child {
+    background-color: #f44336;
+    color: white;
+}
+
+.buttons button:last-child:hover {
+    background-color: #e53935;
+}
+
+@keyframes float {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+    100% { transform: translateY(0); }
+}
+
+.heart {
+    position: absolute;
+    font-size: 30px;
+    color: #ff4d4d;
+    animation: float 2s infinite;
+}
+
+/* Estilos para el mensaje de agradecimiento */
+#message-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 40px;
+    font-weight: bold;
+    color: #ff4d4d;
+    text-transform: uppercase; /* Texto en mayúsculas */
+    display: none; /* Oculto por defecto */
+}
+
+/* Animación para hacer crecer el botón "Sí" */
+@keyframes grow {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.2); }
+}
+
+.grow-button {
+    animation: grow 0.5s forwards;
+}
